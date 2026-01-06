@@ -1,0 +1,1203 @@
+GitHub Actions Certification MCQs (1-200)
+Section 1: Fundamentals & Workflow Structure (Q1-40)
+1. Where must workflow YAML files be placed in a repository?
+A) In the .github/ directory
+B) In .github/workflows/ directory ✓
+C) In .github/actions/ directory
+D) In the repository root
+
+2. What is the correct file extension for workflow files?
+A) .yml or .yaml ✓
+B) .yaml only
+C) .json
+D) .txt
+
+3. Which keyword defines the visible name of a workflow in the Actions tab?
+A) title
+B) label
+C) name ✓
+D) id
+
+4. What section specifies when a workflow triggers?
+A) triggers
+B) on ✓
+C) when
+D) events
+
+5. Can a workflow be triggered by multiple events?
+A) No, only one event per workflow
+B) Yes, using array notation ✓
+C) Only with premium plans
+D) Yes, but only three maximum
+
+6. Which event triggers on pull request activity?
+A) on: pull
+B) on: pull_request ✓
+C) on: pr
+D) on: merge_request
+
+7. How do you specify a push to only the "main" branch?
+A) on: push: branches: main
+B) on: push: branches: [main] ✓
+C) on: push: refs/heads/main
+D) on: push: branch: main
+
+8. What keyword defines jobs in a workflow?
+A) jobs ✓
+B) tasks
+C) steps
+D) workflow
+
+9. How are jobs executed by default?
+A) Sequentially
+B) In parallel ✓
+C) Randomly
+D) Based on resource availability
+
+10. Which keyword makes job_b dependent on job_a?
+A) depends: job_a
+B) requires: job_a
+C) needs: job_a ✓
+D) after: job_a
+
+11. What is the purpose of the runs-on keyword?
+A) Specify the operating system runner
+B) Define GitHub-hosted or self-hosted runner
+C) Both A and B ✓
+D) Set the action version
+
+12. Which is NOT a valid GitHub-hosted runner OS?
+A) ubuntu-latest
+B) windows-latest
+C) macos-latest
+D) centos-latest ✓
+
+13. How do you run commands in a workflow step?
+A) using: command
+B) run: command ✓
+C) exec: command
+D) cmd: command
+
+14. How do you use a pre-built action in a step?
+A) action: action-name
+B) uses: action-name ✓
+C) with: action-name
+D) run: action-name
+
+15. Which action checks out repository code?
+A) actions/checkout ✓
+B) actions/git-checkout
+C) github/checkout
+D) actions/clone
+
+16. What does ${{ }} syntax represent?
+A) Environment variable
+B) Secret reference
+C) Expression ✓
+D) Comment
+
+17. How do you reference the commit SHA in a workflow?
+A) ${{ github.sha }} ✓
+B) ${{ git.commit }}
+C) ${{ commit.hash }}
+D) ${{ env.SHA }}
+
+18. What is the default shell on Ubuntu runners?
+A) bash ✓
+B) sh
+C) pwsh
+D) cmd
+
+19. True/False: Workflow files can have any name as long as they're in .github/workflows/
+A) True ✓
+B) False
+
+20. Where is the default working directory on the runner?
+A) /home/runner
+B) $GITHUB_WORKSPACE ✓
+C) /tmp/workspace
+D) /runner/work
+
+21. How do you add a descriptive name to a step?
+A) title: "Step name"
+B) label: "Step name"
+C) name: "Step name" ✓
+D) description: "Step name"
+
+22. What is the correct syntax for a step ID?
+A) step-id: checkout
+B) id: checkout ✓
+C) name: checkout as id
+D) identifier: checkout
+
+23. How do you reference a previous step's output?
+A) ${{ job.steps.step_id.output }}
+B) ${{ steps.step_id.outputs }} ✓
+C) ${{ outputs.step_id }}
+D) ${{ step_id.outputs }}
+
+24. Which keyword prevents a job from running on failure?
+A) if: success()
+B) if: ${{ success() }}
+C) if: ${{ !failure() }}
+D) if: ${{ success() }} ✓
+
+25. What's the purpose of the continue-on-error keyword?
+A) Skip the step on error
+B) Continue workflow even if step fails ✓
+C) Retry the step automatically
+D) Log error but mark as success
+
+26. How do you set a default value if an expression is null?
+A) ${{ expression || default }}
+B) ${{ expression && default }}
+C) ${{ expression || 'default' }}
+D) ${{ expression || default }} ✓
+
+27. Which context contains information about the workflow run?
+A) github ✓
+B) workflow
+C) runner
+D) actions
+
+28. What does github.ref contain for a pull request?
+A) Source branch name
+B) Target branch name
+C) Full ref like refs/pull/1/merge ✓
+D) Pull request number
+
+29. How do you schedule a workflow for 2 AM UTC daily?
+A) on: schedule: '0 2 * * *' ✓
+B) on: cron: '0 2 * * *'
+C) on: timer: '0 2 * * *'
+D) schedule: '0 2 * * *'
+
+30. What event allows manual workflow triggering?
+A) workflow_dispatch ✓
+B) manual
+C) on-demand
+D) ui_trigger
+
+31. Can workflow_dispatch accept input parameters?
+A) No
+B) Yes ✓
+C) Only string inputs
+D) Only boolean inputs
+
+32. How do you specify inputs for workflow_dispatch?
+A) under inputs: section
+B) under on: workflow_dispatch: inputs: ✓
+C) as workflow parameters
+D) in a separate config file
+
+33. Which event fires when a release is published?
+A) on: release ✓
+B) on: release_published
+C) on: published
+D) on: new_release
+
+34. How do you trigger on issue comments?
+A) on: issue_comment
+B) on: issues: types: [commented]
+C) on: issue_comment: types: [created] ✓
+D) on: comments
+
+35. What's the correct syntax for path filtering?
+A) paths: ['src/']
+B) on: push: paths: ['src/'] ✓
+C) on: push: filter: paths: ['src/']
+D) filter: paths: ['src/']
+
+36. How do you ignore paths?
+A) exclude-paths: ['tests/']
+B) ignore: ['tests/']
+C) paths-ignore: ['tests/'] ✓
+D) skip-paths: ['tests/']
+
+37. What does branches-ignore do?
+A) Prevents workflow on listed branches ✓
+B) Lists required branches
+C) Skips branch validation
+D) Filters branch names
+
+38. Which is a valid activity type for pull_request?
+A) opened ✓
+B) created
+C) submitted
+D) all of the above
+
+39. How do you run on push to tags?
+A) on: push: tags: ['v']
+B) on: push: tags: ✓
+C) on: tag
+D) on: push: refs/tags/ ✓
+
+40. What event triggers when a wiki page updates?
+A) on: wiki
+B) on: gollum ✓
+C) on: wiki_updated
+D) on: page
+
+Section 2: Jobs, Steps & Execution (Q41-80)
+41. What is a job's primary purpose?
+A) Group related steps ✓
+B) Define environment
+C) Set permissions
+D) Allocate resources
+
+42. How do you set environment variables for all steps in a job?
+A) env: under job ✓
+B) variables: under job
+C) environment: under job
+D) defaults: env: under job
+
+43. Can jobs share data directly?
+A) Yes, through global variables
+B) No, they're isolated
+C) Only through outputs and needs ✓
+D) Using shared memory
+
+44. How do you define job outputs?
+A) outputs: under job
+B) job.outputs: section
+C) outputs: under steps
+D) None of the above, jobs don't have outputs directly
+
+45. What keyword controls job concurrency?
+A) parallel
+B) concurrency ✓
+C) limit
+D) max-jobs
+
+46. How do you cancel in-progress runs when new ones start?
+A) concurrency: cancel-in-progress: true
+B) concurrency: group: ${{ github.ref }} cancel-in-progress: true ✓
+C) strategy: cancel-previous: true
+D) workflow: cancel-duplicates: true
+
+47. What's the default timeout for a job?
+A) 30 minutes
+B) 1 hour ✓
+C) 6 hours
+D) No timeout
+
+48. How do you set a 90-minute job timeout?
+A) timeout-minutes: 90 ✓
+B) timeout: 90m
+C) job-timeout: 90
+D) max-duration: 90
+
+49. Which strategy runs a job with multiple configurations?
+A) parallel
+B) matrix ✓
+C) multi-run
+D) configurations
+
+50. How do you define a 2x2 matrix (OS x Node version)?
+A) strategy: matrix: os: [ubuntu, windows], node: [14, 16] ✓
+B) matrix: [os, node]
+C) strategy: [ubuntu-14, ubuntu-16, windows-14, windows-16]
+D) combinations: os x node
+
+51. How do you exclude specific matrix combinations?
+A) strategy: matrix: exclude: [...]
+B) exclude: under matrix ✓
+C) strategy: exclude-combinations: [...]
+D) matrix: skip: [...]
+
+52. What happens if one matrix job fails?
+A) All jobs stop
+B) Only that job fails, others continue ✓
+C) Workflow fails immediately
+D) Depends on fail-fast setting
+
+53. What does fail-fast: true do?
+A) Stops all matrix jobs if one fails ✓
+B) Makes jobs run faster
+C) Skips slow steps
+D) Forces immediate failure
+
+54. How do you reference a matrix value in a job?
+A) ${{ matrix.os }} ✓
+B) ${{ strategy.matrix.os }}
+C) ${{ job.matrix.os }}
+D) ${{ os }}
+
+55. What's a container job?
+A) Job running in Docker container ✓
+B) Job that packages artifacts
+C) Job with limited resources
+D) Job in isolated environment
+
+56. How do you specify a container for a job?
+A) container: image: node:14 ✓
+B) docker: image: node:14
+C) runs-on: container: node:14
+D) environment: container: node:14
+
+57. Can container jobs access the runner's file system?
+A) Yes, through mounts ✓
+B) No, completely isolated
+C) Only /tmp directory
+D) Depends on configuration
+
+58. What keyword sets service containers?
+A) services ✓
+B) containers
+C) service-containers
+D) sidecars
+
+59. How do services communicate with the job?
+A) Through localhost ✓
+B) Shared memory
+C) Environment variables
+D) File system
+
+60. What is a composite action?
+A) Multiple actions combined
+B) Reusable steps group ✓
+C) Nested workflow
+D) Action with dependencies
+
+61. How do you define outputs in composite actions?
+A) outputs: section in action.yml ✓
+B) set-output command
+C) environment variables
+D) file outputs
+
+62. Which command sets an action output?
+A) echo "::set-output name=result::$value"
+B) echo "result=$value" >> $GITHUB_OUTPUT ✓
+C) set-output result=$value
+D) output result=$value
+
+63. How do you set environment variables from a step?
+A) echo "VAR=value" >> $GITHUB_ENV ✓
+B) set-env VAR=value
+C) export VAR=value
+D) env VAR=value
+
+64. What file contains step summaries?
+A) $GITHUB_STEP_SUMMARY ✓
+B) $GITHUB_OUTPUT
+C) $GITHUB_ENV
+D) summary.md
+
+65. How do you add to the job summary?
+A) echo "## Details" >> $GITHUB_STEP_SUMMARY ✓
+B) summary: "Details"
+C) set-summary "Details"
+D) write-summary "Details"
+
+66. What is the purpose of continue-on-error at job level?
+A) Continue workflow if job fails ✓
+B) Retry failed job
+C) Skip failing steps
+D) Ignore all errors
+
+67. How do you make a job conditional?
+A) if: expression under job ✓
+B) condition: under job
+C) when: under job
+D) run-if: under job
+
+68. Which expression checks if previous job succeeded?
+A) ${{ needs.job_id.result == 'success' }}
+B) ${{ needs.job_id.outputs.result }}
+C) ${{ needs.job_id }} (implicit success check)
+D) None, jobs auto-check dependencies
+
+69. What does the "always()" function return?
+A) true always ✓
+B) true if any job succeeded
+C) true if workflow continues
+D) false if cancelled
+
+70. How do you check if workflow was cancelled?
+A) ${{ cancelled() }} ✓
+B) ${{ failure() && github.event.action == 'cancelled' }}
+C) ${{ job.status == 'cancelled' }}
+D) ${{ workflow.cancelled }}
+
+71. What's the default working directory for steps?
+A) $GITHUB_WORKSPACE ✓
+B) /github/workspace
+C) Repository root
+D) Previous step's directory
+
+72. How do you change working directory in a step?
+A) working-directory: ./src ✓
+B) cd ./src
+C) cwd: ./src
+D) directory: ./src
+
+73. Can steps run in different directories?
+A) Yes, each step can specify ✓
+B) No, all steps share directory
+C) Only with container jobs
+D) Depends on runner
+
+74. What is a pre/post step?
+A) Step that runs before/after main steps
+B) pre: and post: keywords for jobs ✓
+C) Setup and cleanup actions
+D) Conditional execution blocks
+
+75. How do you define a post step?
+A) steps: post: [...]
+B) after: [...]
+C) Default post section
+D) Pre/post are job lifecycle hooks, not steps
+
+76. What post condition always runs?
+A) post: always ✓
+B) post: *
+C) post: cleanup
+D) post: final
+
+77. How do you run commands in different shells?
+A) shell: bash
+B) shell: pwsh
+C) Any valid shell
+D) All of the above ✓
+
+78. What shell runs on Windows by default?
+A) pwsh ✓
+B) cmd
+C) bash
+D) sh
+
+79. How do you run PowerShell Core on Ubuntu?
+A) shell: pwsh ✓
+B) shell: powershell
+C) shell: pscore
+D) shell: ps
+
+80. What is the purpose of $GITHUB_PATH?
+A) Add directories to system PATH ✓
+B) Store workflow file path
+C) Reference GitHub API path
+D) Set repository path
+
+Section 3: Runners & Environments (Q81-120)
+81. What are GitHub-hosted runners?
+A) VMs managed by GitHub ✓
+B) User's own machines
+C) Cloud instances
+D) Container instances
+
+82. Which is NOT a GitHub-hosted runner image?
+A) ubuntu-latest
+B) windows-latest
+C) macos-latest
+D) centos-latest ✓
+
+83. What hardware specs do GitHub-hosted runners have?
+A) 2-core CPU, 7GB RAM, 14GB SSD ✓
+B) 4-core CPU, 16GB RAM, 100GB SSD
+C) 1-core CPU, 4GB RAM, 10GB SSD
+D) Varies by plan
+
+84. How long can a job run on GitHub-hosted runners?
+A) 6 hours ✓
+B) 24 hours
+C) 1 hour
+D) Unlimited
+
+85. What are self-hosted runners?
+A) Machines you manage ✓
+B) GitHub's backup runners
+C) Enterprise-only runners
+D) Faster premium runners
+
+86. Where are self-hosted runners configured?
+A) Repository Settings > Actions > Runners ✓
+B) Organization Settings
+C) GitHub CLI
+D) Runner management portal
+
+87. What is a runner group?
+A) Logical grouping of runners ✓
+B) Multiple runners on one machine
+C) Runner version group
+D) Team access control
+
+88. How do you target a runner group?
+A) runs-on: group-name ✓
+B) runs-on: [group-name]
+C) group: group-name
+D) runner-group: group-name
+
+89. What labels can self-hosted runners have?
+A) Any custom labels ✓
+B) Only OS labels
+C) Predefined labels only
+D) No labels
+
+90. How do you run on a self-hosted runner with "linux" label?
+A) runs-on: linux ✓
+B) runs-on: self-hosted, linux
+C) runs-on: [self-hosted, linux] ✓
+D) Both B and C
+
+91. What is ephemeral vs persistent runner?
+A) Ephemeral cleans after job, persistent doesn't ✓
+B) Ephemeral is faster
+C) Persistent has more storage
+D) No difference
+
+92. What security risk exists with self-hosted runners?
+A) They can run untrusted code ✓
+B) They're slower
+C) They cost money
+D) They need maintenance
+
+93. How do you limit which workflows can use a runner?
+A) Workflow restrictions in runner config ✓
+B) Runner labels
+C) Organization policies
+D) Can't limit
+
+94. What are environments in GitHub Actions?
+A) Deployment targets with protections ✓
+B) Runner environments
+C) Variable groups
+D) Container environments
+
+95. How do you reference an environment in a job?
+A) environment: production ✓
+B) env: production
+C) deployment: production
+D) target: production
+
+96. What protection can environments have?
+A) Required reviewers ✓
+B) Deployment branches
+C) Secrets
+D) All of the above ✓
+
+97. How do you specify environment secrets?
+A) In environment settings ✓
+B) In workflow YAML
+C) In repository secrets
+D) In organization secrets
+
+98. What is an environment URL?
+A) Link to deployment ✓
+B) Runner URL
+C) GitHub URL
+D) API endpoint
+
+99. How do environments help with deployments?
+A) Track deployment history ✓
+B) Rollback capability
+C) Both A and B ✓
+D) Neither
+
+100. Can environments have multiple deployments?
+A) Yes, with different statuses ✓
+B) No, one deployment per environment
+C) Only in enterprise
+D) With approval
+
+101. What are environment variables vs secrets?
+A) Secrets are encrypted, variables aren't ✓
+B) No difference
+C) Variables are per-job, secrets are global
+D) Secrets are larger
+
+102. Where are environment-level variables set?
+A) In environment configuration ✓
+B) In workflow file
+C) In runner config
+D) In GitHub settings
+
+103. How do environment variables cascade?
+A) Repository → Environment → Workflow → Job → Step ✓
+B) Step → Job → Workflow → Environment → Repository
+C) Workflow → Job → Step only
+D) No cascading
+
+104. What is a deployment status?
+A) Success/failure of deployment to environment ✓
+B) Runner status
+C) Job completion status
+D) Workflow run status
+
+105. How do you create a deployment via API?
+A) Using deployments endpoint ✓
+B) Auto-created with environments
+C) Manual creation only
+D) Not supported
+
+106. What are deployment protection rules?
+A) Conditions before deployment proceeds ✓
+B) Security scanning
+C) Code review requirements
+D) Branch protections
+
+107. How do you wait for deployment approval?
+A) Environment with required reviewers ✓
+B) Manual workflow step
+C) Wait-for-approval action
+D) Can't wait
+
+108. What is a deployment callback?
+A) URL to notify of deployment status ✓
+B) Webhook for deployments
+C) API callback
+D) Status update
+
+109. How are deployment branches configured?
+A) In environment settings ✓
+B) In workflow YAML
+C) In branch protection
+D) In repository settings
+
+110. What happens with invalid deployment branch?
+A) Deployment blocked ✓
+B) Warning only
+C) Auto-merge attempt
+D) Creates new branch
+
+111. How do you reference environment secrets in workflow?
+A) ${{ secrets.SECRET_NAME }} (auto-scoped to environment) ✓
+B) ${{ env.secrets.SECRET_NAME }}
+C) ${{ environment.secrets.SECRET_NAME }}
+D) secrets.ENVIRONMENT.SECRET_NAME
+
+112. Can jobs use multiple environments?
+A) No, one per job ✓
+B) Yes, multiple
+C) Only with matrix
+D) With special permission
+
+113. How do you skip environment protections?
+A) Can't skip
+B) With admin override ✓
+C) By modifying workflow
+D) Using bypass label
+
+114. What is an environment's purpose in CI/CD?
+A) Represent deployment target (dev/staging/prod) ✓
+B) Set runner configuration
+C) Group similar jobs
+D) Store artifacts
+
+115. How are environment variables exposed to jobs?
+A) As regular environment variables ✓
+B) As workflow inputs
+C) As step outputs
+D) Through files only
+
+116. What is the order of variable precedence?
+A) Step > Job > Workflow > Environment > Repository ✓
+B) Repository > Environment > Workflow > Job > Step
+C) Workflow > Job > Step > Environment > Repository
+D) Environment > Repository > Workflow > Job > Step
+
+117. How do you list all environment variables in a step?
+A) env command
+B) printenv command ✓
+C) echo $ENV
+D) No direct way
+
+118. What's the difference between GITHUB_ENV and environment variables?
+A) GITHUB_ENV sets for subsequent steps, env: sets for current step ✓
+B) No difference
+C) GITHUB_ENV is for secrets only
+D) env: is deprecated
+
+119. How do you mask a value in logs?
+A) It auto-masks secrets
+B) echo "::add-mask::$value" ✓
+C) mask: $value
+D) Can't mask custom values
+
+120. What is a masked variable?
+A) Hidden in logs (显示为***) ✓
+B) Encrypted at rest
+C) Access restricted
+D) Temporarily hidden
+
+Section 4: Secrets, Variables & Security (Q121-160)
+121. Where are repository secrets stored?
+A) Encrypted in GitHub ✓
+B) In workflow files
+C) In runner memory
+D) Local configuration
+
+122. How are secrets accessed in workflows?
+A) ${{ secrets.SECRET_NAME }} ✓
+B) $SECRET_NAME
+C) ${secrets.SECRET_NAME}
+D) secrets['SECRET_NAME']
+
+123. What characters are allowed in secret names?
+A) Letters, numbers, underscore ✓
+B) Any characters
+C) Alphanumeric only
+D) Letters and hyphens
+
+124. Can secrets contain multi-line values?
+A) Yes ✓
+B) No
+C) Only in organization secrets
+D) With base64 encoding
+
+125. Where are organization secrets managed?
+A) Org Settings > Secrets > Actions ✓
+B) Repository settings
+C) GitHub CLI
+D) API only
+
+126. How do organization secrets become available to repos?
+A) By configuring access in secret settings ✓
+B) Automatically to all repos
+C) Through repository invitation
+D) Can't be shared
+
+127. What is the default GITHUB_TOKEN secret?
+A) Auto-generated token for workflow ✓
+B) Personal access token
+C) OAuth token
+D) SSH key
+
+128. What permissions does GITHUB_TOKEN have by default?
+A) Read-only for contents ✓
+B) Full repository access
+C) No permissions
+D) Write access
+
+129. How do you modify GITHUB_TOKEN permissions?
+A) permissions: key: write/read ✓
+B) token-permissions:
+C) github-token-scopes:
+D) Can't modify
+
+130. What happens if GITHUB_TOKEN expires?
+A) Auto-refreshed during workflow ✓
+B) Workflow fails
+C) Uses backup token
+D) Asks for re-auth
+
+131. How do you use a personal access token instead?
+A) Create secret with PAT and reference it ✓
+B) Replace GITHUB_TOKEN
+C) Not possible
+D) Use SSH key
+
+132. What are required secrets?
+A) Secrets that must be set for workflow to run ✓
+B) Secrets with specific format
+C) Organization-mandated secrets
+D) Secrets for protected branches
+
+133. How do you make a secret required?
+A) Mark as required in settings ✓
+B) Add required: true in workflow
+C) Use required-secrets: list
+D) Can't enforce
+
+134. What is secret rotation?
+A) Periodically changing secrets ✓
+B) Secret encryption method
+C) Secret backup process
+D) Access log rotation
+
+135. How often should secrets be rotated?
+A) Regularly, based on policy ✓
+B) Never
+C) Only when compromised
+D) Monthly automatic
+
+136. What is the difference between secrets and variables?
+A) Secrets encrypted, variables not ✓
+B) Variables more secure
+C) No functional difference
+D) Secrets for tokens, variables for config
+
+137. Where can variables be defined?
+A) Repository, organization, environment, workflow ✓
+B) Only in workflow
+C) Repository and environment only
+D) Organization only
+
+138. How do you define variables in workflow?
+A) env: at workflow/job/step level
+B) variables: section ✓
+C) vars: section
+D) config: variables:
+
+139. What is a context?
+A) Object with information about workflow run ✓
+B) Runner environment
+C) Variable namespace
+D) Secret container
+
+140. Which context contains job status?
+A) job ✓
+B) steps
+C) runner
+D) workflow
+
+141. How do you access the job context?
+A) ${{ job.status }} ✓
+B) ${{ jobs.job_id.status }}
+C) ${{ context.job.status }}
+D) ${{ workflow.job.status }}
+
+142. What is the github context?
+A) Information about workflow run and event ✓
+B) GitHub API client
+C) Repository metadata
+D) User information
+
+143. How do you get the PR number from event?
+A) ${{ github.event.pull_request.number }} ✓
+B) ${{ github.pr.number }}
+C) ${{ event.pull_request.number }}
+D) ${{ pr.number }}
+
+144. What does github.event_name contain?
+A) Triggering event name ✓
+B) Workflow name
+C) Job name
+D) Step name
+
+145. How do you check if running on main branch?
+A) ${{ github.ref == 'refs/heads/main' }} ✓
+B) ${{ branch == 'main' }}
+C) ${{ github.branch == 'main' }}
+D) ${{ env.GITHUB_REF == 'main' }}
+
+146. What is the runner context?
+A) Information about runner executing job ✓
+B) Runner configuration
+C) Runner logs
+D) Runner hardware specs
+
+147. How do you get runner OS?
+A) ${{ runner.os }} ✓
+B) ${{ os }}
+C) ${{ runner.operating_system }}
+D) ${{ env.RUNNER_OS }}
+
+148. What is the secrets context?
+A) Access to secrets in workflow ✓
+B) List of available secrets
+C) Secret metadata
+D) Secret encryption info
+
+149. Can you iterate over secrets context?
+A) No, can only access by name ✓
+B) Yes, with for loop
+C) Only in JavaScript actions
+D) With special permission
+
+150. What is the strategy context?
+A) Matrix strategy information ✓
+B) Job strategy
+C) Deployment strategy
+D) Execution plan
+
+151. How do you get total matrix jobs?
+A) ${{ strategy.job-total }} ✓
+B) ${{ job.total }}
+C) ${{ matrix.count }}
+D) ${{ strategy.job-count }}
+
+152. What is the matrix context?
+A) Current matrix configuration ✓
+B) All matrix combinations
+C) Matrix execution plan
+D) Matrix results
+
+153. How do you access matrix values?
+A) ${{ matrix.os }} ✓
+B) ${{ strategy.matrix.os }}
+C) ${{ job.matrix.os }}
+D) ${{ os }}
+
+154. What are expression functions?
+A) Built-in functions for expressions ✓
+B) Custom JavaScript functions
+C) External API calls
+D) Runner commands
+
+155. Which function converts to string?
+A) toJSON ✓
+B) toString
+C) string
+D) format
+
+156. How do you check if string contains substring?
+A) contains(searchString, substring) ✓
+B) includes(substring)
+C) search(substring)
+D) find(substring)
+
+157. What does startsWith check?
+A) If string starts with prefix ✓
+B) If workflow started
+C) If job started
+D) If step started
+
+158. How do you format a date?
+A) format('format-string', date) ✓
+B) dateFormat(date, format)
+C) toDateString(date, format)
+D) string(date, format)
+
+159. What is hashFiles function for?
+A) Generate hash of files' contents ✓
+B) Hash secrets
+C) Encrypt files
+D) Check file existence
+
+160. How do you check if always()?
+A) always() returns true ✓
+B) success() && !failure()
+C) !cancelled()
+D) true
+
+Section 5: Advanced Features & Best Practices (Q161-200)
+161. What are reusable workflows?
+A) Workflows called from other workflows ✓
+B) Template workflows
+C) Workflow examples
+D) Archived workflows
+
+162. How do you call a reusable workflow?
+A) uses: ./.github/workflows/reusable.yml ✓
+B) workflow: reusable.yml
+C) call: reusable
+D) import: ./reusable.yml
+
+163. Can reusable workflows be in different repos?
+A) Yes, with full path ✓
+B) No, same repo only
+C) Only in same organization
+D) With special permission
+
+164. How do you pass inputs to reusable workflow?
+A) with: parameter ✓
+B) inputs: parameter
+C) args: parameter
+D) parameters: parameter
+
+165. How do reusable workflows return outputs?
+A) outputs: defined in called workflow ✓
+B) Return statement
+C) Step outputs
+D) File artifacts
+
+166. What is a composite action?
+A) Action combining multiple steps ✓
+B) Multiple actions in one
+C) Nested workflow
+D) Workflow template
+
+167. Where is composite action defined?
+A) action.yml or action.yaml ✓
+B) composite.yml
+C) .github/composite/
+D) In workflow file
+
+168. How do you run steps in composite action?
+A) steps: section ✓
+B) run: commands
+C) composite: steps:
+D) actions: steps:
+
+169. Can composite actions have inputs?
+A) Yes ✓
+B) No
+C) Only outputs
+D) Only secrets
+
+170. How do you use a composite action?
+A) uses: path/to/action.yml ✓
+B) action: composite
+C) composite: path
+D) run: composite
+
+171. What are artifacts?
+A) Files saved from workflow run ✓
+B) Workflow outputs
+C) Action results
+D) Log files
+
+172. How do you upload artifacts?
+A) actions/upload-artifact ✓
+B) save-artifact action
+C) artifact: upload:
+D) GitHub API
+
+173. How do you download artifacts?
+A) actions/download-artifact ✓
+B) get-artifact action
+C) artifact: download:
+D) Auto-downloaded
+
+174. Can artifacts be shared between jobs?
+A) Yes, within same workflow run ✓
+B) No
+C) Only with manual download
+D) Across workflow runs
+
+175. What is artifact retention period?
+A) How long artifacts are kept ✓
+B) Download time limit
+C) Storage duration
+D) Archive period
+
+176. How do you set artifact name?
+A) with: name: artifact-name ✓
+B) artifact-name: parameter
+C) output: name: artifact-name
+D) name: under artifact:
+
+177. What is caching?
+A) Storing dependencies for reuse ✓
+B) Saving workflow results
+C) Archiving artifacts
+D) Backup process
+
+178. Which action manages caching?
+A) actions/cache ✓
+B) cache-action
+C) setup-cache
+D) npm-cache
+
+179. What is a cache key?
+A) Unique identifier for cache ✓
+B) Encryption key
+C) Access key
+D) Version key
+
+180. How do you restore cache?
+A) actions/cache with restore-keys ✓
+B) get-cache action
+C) cache: restore:
+D) Auto-restored
+
+181. What are restore keys?
+A) Partial keys for fallback match ✓
+B) Backup keys
+C) Decryption keys
+D) Access keys
+
+182. How is cache scoped?
+A) By branch, key, and restore keys ✓
+B) By repository only
+C) By workflow
+D) By organization
+
+183. What is the default cache location for npm?
+A) ~/.npm ✓
+B) /tmp/npm
+C) node_modules
+D) .npm-cache
+
+184. How do you cache multiple paths?
+A) Array in path parameter ✓
+B) Multiple cache actions
+C) path: with wildcards
+D) Can't cache multiple
+
+185. What are workflow badges?
+A) Status badges for README ✓
+B) Achievement badges
+C) Verification badges
+D) Security badges
+
+186. How do you get workflow badge URL?
+A) From Actions tab > Workflow > Create status badge ✓
+B) Auto-generated in settings
+C) API endpoint
+D) Badge service
+
+187. What is a status check?
+A) PR check from workflow ✓
+B) Health check
+C) Runner status
+D) Job status
+
+188. How do status checks affect merges?
+A) Can block PR merge if required ✓
+B) No effect
+C) Optional notification
+D) Auto-merge trigger
+
+189. What are required status checks?
+A) Checks that must pass before merge ✓
+B) All workflow checks
+C) Manual approvals
+D) Code reviews
+
+190. How do you skip CI for a commit?
+A) Add [skip ci] to commit message ✓
+B) Special branch name
+C) Workflow setting
+D) Can't skip
+
+191. What is ACTIONS_STEP_DEBUG?
+A) Enables step debug logging ✓
+B) Action debugging tool
+C) Step timeout setting
+D) Error reporting
+
+192. How do you enable debug logging?
+A) Set secret: ACTIONS_STEP_DEBUG=true ✓
+B) workflow setting
+C) Runner config
+D) Always enabled
+
+193. What is ACTIONS_RUNNER_DEBUG?
+A) Enables runner debug logging ✓
+B) Runner configuration
+C) Debug tool
+D) Error handling
+
+194. How do you access workflow logs?
+A) Actions tab > Workflow run ✓
+B) Repository logs
+C) Runner logs
+D) GitHub CLI
+
+195. What is log retention period?
+A) How long logs are kept ✓
+B) Log download time
+C) Archive duration
+D) Storage limit
+
+196. How do you download all logs?
+A) Download button in Actions UI ✓
+B) GitHub CLI
+C) API only
+D) Auto-download
+
+197. What are workflow run annotations?
+A) Messages in workflow summary ✓
+B) Code annotations
+C) Log markers
+D) Error highlights
+
+198. How do you create an annotation?
+A) echo "::error file=app.js,line=1::Message" ✓
+B) annotation: error
+C) log-annotation:
+D) GitHub API
+
+199. What annotation types exist?
+A) error, warning, notice ✓
+B) info, debug, trace
+C) success, failure, cancelled
+D) All log levels
+
+200. How do you reference line in annotation?
+A) line=10 parameter ✓
+B) :line:10
+C) at line 10
+D) line: 10
