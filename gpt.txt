@@ -1,0 +1,803 @@
+✅ Section A: Fundamentals (1–40)
+1. What is GitHub Actions primarily used for?
+
+Answer: Automating CI/CD workflows such as build, test, deployment, and repository automation.
+
+2. Where are workflow files stored?
+
+Answer: .github/workflows/ directory.
+
+3. Which file format does GitHub Actions use?
+
+Answer: YAML (.yml or .yaml).
+
+4. Can a repository have multiple workflows?
+
+Answer: Yes.
+
+5. What keyword defines workflow triggers?
+
+Answer: on
+
+6. Which trigger runs manually?
+
+Answer: workflow_dispatch
+
+7. True/False: Jobs run sequentially by default.
+
+Answer: False.
+
+8. What defines the OS for a job?
+
+Answer: runs-on
+
+9. What is a runner?
+
+Answer: A server that executes GitHub Actions jobs.
+
+10. What is an action?
+
+Answer: A reusable automation component used in workflows.
+
+11. True/False: Actions must be written in JavaScript.
+
+Answer: False.
+
+12. What is the default Linux runner?
+
+Answer: ubuntu-latest
+
+13. What does uses: indicate?
+
+Answer: Calls an action or reusable workflow.
+
+14. What does run: do?
+
+Answer: Executes shell commands.
+
+15. Can jobs run in parallel?
+
+Answer: Yes.
+
+16. What is the minimum requirement for a workflow?
+
+Answer: A valid YAML file with on and at least one job.
+
+17. True/False: Workflows can access repository code.
+
+Answer: True.
+
+18. What YAML key defines jobs?
+
+Answer: jobs
+
+19. What is the default shell on Ubuntu runners?
+
+Answer: bash
+
+20. True/False: GitHub Actions is free for all usage.
+
+Answer: False.
+
+21. Which directory is mandatory for workflows?
+
+Answer: .github/workflows
+
+22. Can workflows be disabled?
+
+Answer: Yes.
+
+23. What happens if a workflow file has invalid YAML?
+
+Answer: The workflow fails to run.
+
+24. True/False: Each job runs in a clean environment.
+
+Answer: True.
+
+25. What defines step order?
+
+Answer: The order in the YAML file.
+
+26. What is the purpose of workflow name?
+
+Answer: To identify the workflow in the GitHub UI.
+
+27. Can workflows run on forks?
+
+Answer: Yes, with restrictions.
+
+28. True/False: Actions can be reused across repos.
+
+Answer: True.
+
+29. What does checkout action do?
+
+Answer: Checks out repository code.
+
+30. Can steps share data?
+
+Answer: Yes, within the same job.
+
+31. What is $GITHUB_WORKSPACE?
+
+Answer: The directory where repository code is checked out.
+
+32. Can workflows access GitHub API?
+
+Answer: Yes.
+
+33. What permission does GITHUB_TOKEN have by default?
+
+Answer: Repository-scoped read/write permissions.
+
+34. True/False: Runners persist after job completion.
+
+Answer: False.
+
+35. What defines environment variables?
+
+Answer: env
+
+36. Can workflows run without code changes?
+
+Answer: Yes.
+
+37. What triggers on PR open?
+
+Answer: pull_request
+
+38. True/False: Jobs can depend on other jobs.
+
+Answer: True.
+
+39. What is the smallest executable unit?
+
+Answer: Step.
+
+40. What is CI?
+
+Answer: Continuous Integration.
+
+✅ Section B: Triggers & Filters (41–80)
+41. What event runs on every commit?
+
+Answer: push
+
+42. How do you restrict workflow to main branch?
+
+Answer: branches: [main]
+
+43. What does paths-ignore do?
+
+Answer: Prevents workflow from running on specified path changes.
+
+44. Can workflows run on tag creation?
+
+Answer: Yes.
+
+45. Which trigger supports cron?
+
+Answer: schedule
+
+46. What timezone does cron use?
+
+Answer: UTC.
+
+47. True/False: schedule supports inputs.
+
+Answer: False.
+
+48. What event triggers on PR close?
+
+Answer: pull_request (closed).
+
+49. How to trigger workflow externally?
+
+Answer: repository_dispatch.
+
+50. What does repository_dispatch require?
+
+Answer: GitHub API call.
+
+51. Can one workflow have multiple triggers?
+
+Answer: Yes.
+
+52. How to ignore docs-only changes?
+
+Answer: Use paths-ignore.
+
+53. What is workflow_dispatch used for?
+
+Answer: Manual execution.
+
+54. Can inputs be optional?
+
+Answer: Yes.
+
+55. What is default branch behavior?
+
+Answer: Runs on all branches.
+
+56. True/False: Tags are branches.
+
+Answer: False.
+
+57. How do you match release branches?
+
+Answer: release/*.
+
+58. What event triggers on issue creation?
+
+Answer: issues.
+
+59. Can workflows trigger other workflows?
+
+Answer: Yes.
+
+60. What is workflow_run?
+
+Answer: Triggers a workflow after another completes.
+
+61. Can triggers be combined?
+
+Answer: Yes.
+
+62. What happens if no trigger defined?
+
+Answer: Workflow never runs.
+
+63. True/False: Manual triggers need UI access.
+
+Answer: True.
+
+64. Can workflows run on deleted branches?
+
+Answer: No.
+
+65. What is the safest deployment trigger?
+
+Answer: Protected environments with approvals.
+
+66. Can schedule run on fork?
+
+Answer: No.
+
+67. What happens on force push?
+
+Answer: Workflow runs again.
+
+68. Can path filters be combined with branches?
+
+Answer: Yes.
+
+69. True/False: Events are case-sensitive.
+
+Answer: False.
+
+70. What event triggers on release publish?
+
+Answer: release.
+
+71. How to run workflow only once per PR?
+
+Answer: Use concurrency.
+
+72. What triggers on merge?
+
+Answer: push.
+
+73. Can you cancel triggered workflows?
+
+Answer: Yes.
+
+74. What is event payload?
+
+Answer: Data sent by the triggering event.
+
+75. How to debug trigger issues?
+
+Answer: Check logs and event filters.
+
+76. Can workflows trigger on comments?
+
+Answer: Yes.
+
+77. What is issue_comment event?
+
+Answer: Triggered by comments on issues or PRs.
+
+78. Can workflows run on archived repos?
+
+Answer: No.
+
+79. True/False: Scheduled workflows require activity.
+
+Answer: False.
+
+80. What is best trigger for nightly builds?
+
+Answer: schedule.
+
+✅ Section C: Jobs, Steps & Matrix (81–130)
+81. What is needs: used for?
+
+Answer: Job dependency.
+
+82. Can a job run without steps?
+
+Answer: No.
+
+83. How to fail a job?
+
+Answer: Exit with non-zero code.
+
+84. What is matrix strategy?
+
+Answer: Run jobs across multiple configurations.
+
+85. Can matrix include OS?
+
+Answer: Yes.
+
+86. True/False: Matrix runs sequentially.
+
+Answer: False.
+
+87. How to exclude matrix combinations?
+
+Answer: exclude.
+
+88. What is job timeout default?
+
+Answer: 360 minutes.
+
+89. Can steps be conditional?
+
+Answer: Yes.
+
+90. What is continue-on-error?
+
+Answer: Allows step failure without stopping job.
+
+91. Can steps share environment variables?
+
+Answer: Yes.
+
+92. What does shell: define?
+
+Answer: Command interpreter.
+
+93. Can you run PowerShell on Linux?
+
+Answer: Yes.
+
+94. What happens when step fails?
+
+Answer: Job fails.
+
+95. Can job outputs be shared?
+
+Answer: Yes.
+
+96. What defines working directory?
+
+Answer: working-directory.
+
+97. Can jobs use different runners?
+
+Answer: Yes.
+
+98. True/False: Steps run in isolation.
+
+Answer: False.
+
+99. What is strategy.fail-fast?
+
+Answer: Stops matrix jobs on failure.
+
+100. Can jobs access artifacts?
+
+Answer: Yes.
+
+101. What does env: at job level do?
+
+Answer: Defines job environment variables.
+
+102. What is default job name?
+
+Answer: Job ID.
+
+103. Can job names be dynamic?
+
+Answer: Yes.
+
+104. How to retry jobs?
+
+Answer: Re-run workflow.
+
+105. Can steps call APIs?
+
+Answer: Yes.
+
+106. What is defaults.run.shell?
+
+Answer: Default shell for steps.
+
+107. Can jobs run on containers?
+
+Answer: Yes.
+
+108. What is service container?
+
+Answer: Supporting container like DB.
+
+109. Can jobs run in Docker?
+
+Answer: Yes.
+
+110. True/False: Containers need Linux runners.
+
+Answer: True.
+
+111. How to stop workflow early?
+
+Answer: Conditions or cancellation.
+
+112. Can steps output values?
+
+Answer: Yes.
+
+113. What is id: in step?
+
+Answer: Identifier for referencing outputs.
+
+114. How to reference step output?
+
+Answer: steps.<id>.outputs.<name>.
+
+115. What is timeout-minutes?
+
+Answer: Job execution time limit.
+
+116. Can steps be reused?
+
+Answer: Via composite actions.
+
+117. What happens on runner crash?
+
+Answer: Job fails.
+
+118. Can jobs be skipped?
+
+Answer: Yes.
+
+119. What defines job concurrency?
+
+Answer: concurrency.
+
+120. How to visualize job order?
+
+Answer: GitHub UI.
+
+121. Can jobs run conditionally?
+
+Answer: Yes.
+
+122. What happens if needs job fails?
+
+Answer: Dependent job skipped.
+
+123. Can matrix use versions?
+
+Answer: Yes.
+
+124. What is job context?
+
+Answer: Job metadata.
+
+125. How to debug step failure?
+
+Answer: Logs.
+
+126. Can steps write files?
+
+Answer: Yes.
+
+127. What is default workspace?
+
+Answer: $GITHUB_WORKSPACE.
+
+128. Can jobs access secrets?
+
+Answer: Yes.
+
+129. Can secrets be overridden?
+
+Answer: Yes.
+
+130. True/False: Matrix increases speed.
+
+Answer: True.
+
+✅ Section D: Security, Artifacts, Advanced (131–200)
+131. Where are secrets stored?
+
+Answer: Repo, org, or environment.
+
+132. Can secrets be logged?
+
+Answer: No.
+
+133. What is environment protection?
+
+Answer: Approval and rules before deploy.
+
+134. What is required for prod deploy?
+
+Answer: Approval.
+
+135. Can secrets be environment-specific?
+
+Answer: Yes.
+
+136. What is artifact retention?
+
+Answer: Duration artifacts are stored.
+
+137. Can artifacts be shared across workflows?
+
+Answer: No.
+
+138. What is cache key?
+
+Answer: Identifier for cache.
+
+139. When cache is restored?
+
+Answer: Before job execution.
+
+140. Can cache exceed size limit?
+
+Answer: No.
+
+141. What is reusable workflow?
+
+Answer: Callable workflow.
+
+142. What trigger enables reuse?
+
+Answer: workflow_call.
+
+143. Can reusable workflows accept secrets?
+
+Answer: Yes.
+
+144. What is inputs?
+
+Answer: Parameters.
+
+145. Can workflows call themselves?
+
+Answer: No.
+
+146. What is least privilege?
+
+Answer: Minimum permissions.
+
+147. Can permissions be restricted?
+
+Answer: Yes.
+
+148. What does permissions: control?
+
+Answer: Token access.
+
+149. Default permission for contents?
+
+Answer: Read.
+
+150. Can GITHUB_TOKEN be disabled?
+
+Answer: Yes.
+
+151. What is OpenID Connect?
+
+Answer: Identity federation.
+
+152. What is OIDC used for?
+
+Answer: Secure cloud auth.
+
+153. Can workflows deploy to cloud securely?
+
+Answer: Yes.
+
+154. What is concurrency.group?
+
+Answer: Limits parallel runs.
+
+155. Can concurrency cancel runs?
+
+Answer: Yes.
+
+156. What happens to canceled jobs?
+
+Answer: Stopped immediately.
+
+157. Can workflows be versioned?
+
+Answer: Yes.
+
+158. Best practice for actions versioning?
+
+Answer: Pin versions.
+
+159. Can workflows be linted?
+
+Answer: Yes.
+
+160. What is audit log?
+
+Answer: Security activity log.
+
+161. Can workflows be restricted by org?
+
+Answer: Yes.
+
+162. What is runner group?
+
+Answer: Group of runners.
+
+163. Can runners be offline?
+
+Answer: Yes.
+
+164. What happens if no runner available?
+
+Answer: Job queued.
+
+165. What is job queue?
+
+Answer: Waiting jobs list.
+
+166. Can workflows access secrets from forks?
+
+Answer: No.
+
+167. What is approval gate?
+
+Answer: Manual approval.
+
+168. Can environments require reviewers?
+
+Answer: Yes.
+
+169. What is deployment environment?
+
+Answer: Target environment.
+
+170. Can workflow modify repo?
+
+Answer: Yes.
+
+171. What permission needed to push code?
+
+Answer: contents: write.
+
+172. Can workflows create releases?
+
+Answer: Yes.
+
+173. Can workflows open PRs?
+
+Answer: Yes.
+
+174. What is automation abuse?
+
+Answer: Misuse of workflows.
+
+175. How to prevent infinite loops?
+
+Answer: Conditions.
+
+176. What is best practice for forks?
+
+Answer: Restrict permissions.
+
+177. Can workflows run on PR from fork?
+
+Answer: Yes (limited).
+
+178. What is masked value?
+
+Answer: Hidden secret value.
+
+179. Can secrets be rotated?
+
+Answer: Yes.
+
+180. What is dependency caching best practice?
+
+Answer: Stable cache keys.
+
+181. Can workflows use third-party APIs?
+
+Answer: Yes.
+
+182. What is rate limiting?
+
+Answer: API request limit.
+
+183. How to reduce CI cost?
+
+Answer: Caching and filters.
+
+184. Can workflows be disabled per repo?
+
+Answer: Yes.
+
+185. Can workflows be organization-wide?
+
+Answer: Yes.
+
+186. What is action pinning?
+
+Answer: Locking action versions.
+
+187. Why pin SHA instead of tag?
+
+Answer: SHA is immutable.
+
+188. Can actions be private?
+
+Answer: Yes.
+
+189. What is composite action?
+
+Answer: Multi-step reusable action.
+
+190. Can composite actions run containers?
+
+Answer: No.
+
+191. What is marketplace trust model?
+
+Answer: Community-based trust.
+
+192. Can actions be signed?
+
+Answer: Yes.
+
+193. What is provenance?
+
+Answer: Build origin verification.
+
+194. What is SBOM?
+
+Answer: Software Bill of Materials.
+
+195. Can workflows generate SBOM?
+
+Answer: Yes.
+
+196. What is security hardening?
+
+Answer: Strengthening security controls.
+
+197. What is secret scanning?
+
+Answer: Detecting leaked secrets.
+
+198. Can GitHub block leaked secrets?
+
+Answer: Yes.
+
+199. What is Dependabot integration?
+
+Answer: Automated dependency updates.
+
+200. What is GitHub Actions best use case?
+
+Answer: End-to-end CI/CD automation.
